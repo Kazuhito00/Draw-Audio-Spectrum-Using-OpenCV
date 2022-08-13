@@ -190,7 +190,8 @@ def draw_audio_waveform02(
         bg_color=(255, 255, 255),
         plot_color=(0, 0, 0),
 ):
-    original_width = len(sampling_data)
+    original_width = len(sampling_data) - n_conv
+    height = height
     center_y = int(height / 2)
 
     image = np.zeros((height, original_width, 3))
