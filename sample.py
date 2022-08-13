@@ -27,7 +27,7 @@ draw_function_list = [
 def get_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--file", type=str, default=None)
+    parser.add_argument("--wave", type=str, default=None)
     parser.add_argument("--device", type=int, default=1)
 
     parser.add_argument("--frames", type=int, default=2048)
@@ -40,7 +40,16 @@ def get_args():
     return args
 
 
-def main(filename, device_index, frame_n, fft_sample_size, draw_type):
+def main():
+    args = get_args()
+
+    filename = args.wave
+    device_index = args.device
+    frame_n = args.frames
+    fft_sample_size = args.fft_n
+
+    draw_type = args.draw_type
+
     # オーディオストリームを開く
     audio = pyaudio.PyAudio()
     if filename is not None:
@@ -120,13 +129,4 @@ def main(filename, device_index, frame_n, fft_sample_size, draw_type):
 
 # --------------------------------------------------------------------
 if __name__ == "__main__":
-    args = get_args()
-
-    filename = args.file
-    device_index = args.device
-    frame_n = args.frames
-    fft_sample_size = args.fft_n
-
-    draw_type = args.draw_type
-
-    main(filename, device_index, frame_n, fft_sample_size, draw_type)
+    main()
