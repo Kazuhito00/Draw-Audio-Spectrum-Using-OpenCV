@@ -63,7 +63,7 @@ python sample.py
 * --device<br>
 マイクなどの入力デバイス番号の指定<br>
 デフォルト：1
-* --file<br>
+* --wave<br>
 Waveファイルの指定 ※指定時はマイクデバイスより優先<br>
 デフォルト：指定なし
 * --frames<br>
