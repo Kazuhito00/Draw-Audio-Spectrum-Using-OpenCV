@@ -14,15 +14,19 @@ def draw_audio_spectrum01(
         bar_gap=1,
         bg_color=(0, 0, 0),
         plot_color=(0, 255, 0),
+        bg_image=None,
 ):
-    image = np.zeros((height, width, 3))
-    cv2.rectangle(
-        image,
-        (0, 0),
-        (width, height),
-        bg_color,
-        thickness=-1,
-    )
+    if bg_image is None:
+        image = np.zeros((height, width, 3))
+        cv2.rectangle(
+            image,
+            (0, 0),
+            (width, height),
+            bg_color,
+            thickness=-1,
+        )
+    else:
+        image = cv2.resize(bg_image, (width, height))
 
     bar_width = width / bar_num
 
@@ -57,15 +61,19 @@ def draw_audio_spectrum02(
         bar_gap=6,
         bg_color=(0, 0, 0),
         plot_color=(255, 255, 255),
+        bg_image=None,
 ):
-    image = np.zeros((height, width, 3))
-    cv2.rectangle(
-        image,
-        (0, 0),
-        (width, height),
-        bg_color,
-        thickness=-1,
-    )
+    if bg_image is None:
+        image = np.zeros((height, width, 3))
+        cv2.rectangle(
+            image,
+            (0, 0),
+            (width, height),
+            bg_color,
+            thickness=-1,
+        )
+    else:
+        image = cv2.resize(bg_image, (width, height))
 
     bar_width = width / bar_num
     center_y = int(height / 2)
@@ -112,15 +120,19 @@ def draw_audio_spectrum03(
         thickness=3,
         bg_color=(0, 0, 0),
         plot_color=(0, 128, 255),
+        bg_image=None,
 ):
-    image = np.zeros((height, width, 3))
-    cv2.rectangle(
-        image,
-        (0, 0),
-        (width, height),
-        bg_color,
-        thickness=-1,
-    )
+    if bg_image is None:
+        image = np.zeros((height, width, 3))
+        cv2.rectangle(
+            image,
+            (0, 0),
+            (width, height),
+            bg_color,
+            thickness=-1,
+        )
+    else:
+        image = cv2.resize(bg_image, (width, height))
 
     for index in range(bar_num):
         value = amplitude_spectrum[index + 0]
@@ -148,18 +160,22 @@ def draw_audio_waveform01(
         thickness=2,
         bg_color=(255, 255, 255),
         plot_color=(255, 0, 0),
+        bg_image=None,
 ):
     original_width = len(sampling_data)
     center_y = int(height / 2)
 
-    image = np.zeros((height, original_width, 3))
-    cv2.rectangle(
-        image,
-        (0, 0),
-        (original_width, height),
-        bg_color,
-        thickness=-1,
-    )
+    if bg_image is None:
+        image = np.zeros((height, width, 3))
+        cv2.rectangle(
+            image,
+            (0, 0),
+            (original_width, height),
+            bg_color,
+            thickness=-1,
+        )
+    else:
+        image = cv2.resize(bg_image, (original_width, height))
 
     prev_value = None
     for index, point in enumerate(sampling_data):
@@ -189,19 +205,22 @@ def draw_audio_waveform02(
         n_conv=32,
         bg_color=(255, 255, 255),
         plot_color=(0, 0, 0),
+        bg_image=None,
 ):
-    original_width = len(sampling_data) - n_conv
-    height = height
+    original_width = len(sampling_data)
     center_y = int(height / 2)
 
-    image = np.zeros((height, original_width, 3))
-    cv2.rectangle(
-        image,
-        (0, 0),
-        (original_width, height),
-        bg_color,
-        thickness=-1,
-    )
+    if bg_image is None:
+        image = np.zeros((height, width, 3))
+        cv2.rectangle(
+            image,
+            (0, 0),
+            (original_width, height),
+            bg_color,
+            thickness=-1,
+        )
+    else:
+        image = cv2.resize(bg_image, (original_width, height))
 
     sampling_data_valid = np.convolve(
         np.array(sampling_data),
