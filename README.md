@@ -7,8 +7,8 @@ opencv-python 4.5.5.62 or later
 PyAudio 0.2.11         or later
 ```
 
-WindowsでPyAudioをインストールしたい方は、自力でビルドするか、<br>
-[非公式のWindowsビルドPyAudio](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)を用いてください。
+<!--WindowsでPyAudioをインストールしたい方は、自力でビルドするか、
+[非公式のWindowsビルドPyAudio](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)を用いてください。-->
 
 
 # Contents
